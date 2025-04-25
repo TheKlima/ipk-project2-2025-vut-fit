@@ -1,4 +1,4 @@
-Project's assignment can be found [here](https://git.fit.vutbr.cz/NESFIT/IPK-Projects/src/branch/master/Project_2).
+A client application that can communicate with a remote server using the IPK25-CHAT protocol. The protocol has two variants - each built on top of the well-known transport protocols: TCP and UDP. Project's assignment can be found [here](https://git.fit.vutbr.cz/NESFIT/IPK-Projects/src/branch/master/Project_2).
 
 Documentation of Project 2 IPK 2024/2025<br>
 Name and surname: Andrii Klymenko<br>
