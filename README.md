@@ -1,3 +1,5 @@
+Project's assignment can be found [here](https://git.fit.vutbr.cz/NESFIT/IPK-Projects/src/branch/master/Project_2).
+
 Documentation of Project 2 IPK 2024/2025<br>
 Name and surname: Andrii Klymenko<br>
 Login: xklyme00
