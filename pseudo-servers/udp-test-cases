@@ -1,0 +1,77 @@
+client sends bye -> server sends confirm 0 asc1
+client sends bye -> server sends bye -> client sends confirm 0 asb0a
+client sends auth -> server sends bye -> client sends confirm 0 asb0a
+client sends auth -> server sends err -> client sends confirm 1 ase0a
+client sends bye -> server sends err -> client sends confirm 1 ase0a
+
+aaaaaasc0sb0a
+
+client sends auth -> retrans timeout: send auth again -> server sends bye -> client sends confirm 0 aasb0a
+client sends auth -> retrans timeout: send auth again -> server sends err -> client sends confirm 1 aase0a
+client sends auth -> retrans timeout: send auth again(x2) -> server sends bye -> client sends confirm 0 aaasb0a
+client sends auth -> retrans timeout: send auth again(x2) -> server sends err -> client sends confirm 1 aaase0a
+client sends auth -> retrans timeout: send auth again(x3) -> server sends bye -> client sends confirm 0 aaaasb0a
+client sends auth -> retrans timeout: send auth again(x3) -> server sends err -> client sends confirm 1 aaaase0a
+client sends auth -> retrans timeout: send auth again(x4) -> server sends confirm 1 aaaaase0a
+
+client sends bye -> retrans timeout: send auth again -> server sends bye -> client sends confirm 0 aasb0a
+client sends bye -> retrans timeout: send auth again -> server sends err -> client sends confirm 1 aase0a
+client sends bye -> retrans timeout: send auth again(x2) -> server sends bye -> client sends confirm 0 aaasb0a
+client sends bye -> retrans timeout: send auth again(x2) -> server sends err -> client sends confirm 1 aaase0a
+client sends bye -> retrans timeout: send auth again(x3) -> server sends bye -> client sends confirm 0 aaaasb0a
+client sends bye -> retrans timeout: send auth again(x3) -> server sends err -> client sends confirm 1 aaaase0a
+client sends bye -> retrans timeout: send auth again(x4) -> server sends confirm 1 aaaaase0a
+
+client sends auth/bye -> server sends too long message -> client sends end -> server sends confirm astasc1a
+
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends bye -> server sends confirm asc0sr0 0 0aasc2aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> server sends err -> client sends confirm asc0sr0 0 0ase1aa
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends bye -> server sends confirm asc0sr0 1 0aasc2aa
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends err -> server sends confirm asc0sr0 1 0ase1aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends bye -> server sends confirm asc0sr0 0 0aasc1sr1 1 1aasc3
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends err -> client sends confirm asc0sr0 0 0aasc1sr1 1 1ase2aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends bye -> server sends confirm asc0sr0 0 0aasc1sr1 0 1aasc2sr2 1 2aasc4aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends err -> client sends confirm asc0sr0 0 0aasc1sr1 0 1aasc2sr2 1 2ase3aa
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 1 0aasc1asc3aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 0 0aasc1sr1 1 1aasc2asc4
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 0 0aasc1sr1 0 1aasc2sr2 1 2aasc3asc5a
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 1 0aaasc1asc3aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 0 0aasc1sr1 1 1aaasc2asc4
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 0 0aasc1sr1 0 1aasc2sr2 1 2aaasc3asc5a
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x2) -> server sends confirm -> client sends bye -> server sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x2) -> server sends confirm -> client sends bye -> server sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x2) -> server sends confirm -> client sends bye -> server sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x3) -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 1 0aaaaasc1asc3aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x3) -> server sends confirm -> client sends bye -> server sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x3) -> server sends confirm -> client sends bye -> server sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x4) -> server sends confirm -> client sends bye -> server sends confirm asc0sr0 1 0aaaaaasc1asc3aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x4) -> server sends confirm -> client sends bye -> server sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> retrans timeout: send msg again(x4) -> server sends confirm -> client sends bye -> server sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> client sends bye -> server sends confirm asc0sr0 1 0asm1aasc2
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> client sends bye -> server sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> client sends bye -> server sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> server sends bye -> client sends confirm asc0sr0 1 0asm1asb2aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> server sends bye -> client sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> server sends bye -> client sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> server sends err -> client sends confirm asc0sr0 1 0asm1ase2aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> server sends err -> client sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> server sends msg -> client sends confirm -> server sends err -> client sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends bye -> client sends confirm asc0sr0 1 0aasc1sb1aa
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends bye -> client sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends bye -> client sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends err -> client sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends err -> client sends confirm
+client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends !reply -> client sends confirm -> client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends err -> client sends confirm
+
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends msg -> server sends confirm -> server sends msg -> client sends confirm -> client sends msg -> server sends confirm -> client sends msg -> server sends confirm -> server sends msg -> client sends confirm -> server sends msg -> client sends confirm -> server sends msg -> client sends confirm -> server sends bye -> client sends confirm asc0sr0 1 0aasc1sm1aasc2asc3sm2asm3asm4asb5aa
+client sends auth -> server sends confirm -> server sends reply -> client sends confirm -> client sends join -> server sends confirm -> server sends !reply -> client sends confirm -> client sends join -> server sends confirm -> server sends reply -> client sends confirm -> client sends join -> server sends msg -> server sends confirm -> client sends confirm -> server sends reply -> client sends confirm -> server sends err -> client sends confirm asc0sr0 1 0aasc1sr1 0 1aasc2sr2 1 2aasm3sc3asr4 0 3ase5a

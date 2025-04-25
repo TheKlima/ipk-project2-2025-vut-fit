@@ -1,0 +1,8 @@
+obj
+ipk25chat-client
+.idea
+CMakeLists.txt
+cmake-build-debug
+tcp-serv
+udp-serv
+__pycache__/
